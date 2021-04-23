@@ -6,6 +6,8 @@
 #include <QFileDialog>
 #include <QMessageBox>
 
+extern Login * login;
+
 SelectDatabase::SelectDatabase(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::SelectDatabase)
@@ -43,7 +45,7 @@ void SelectDatabase::on_buttonBox_accepted()
         return;
     }
 
-    Login *login = new Login(0, new Conexao(fileName));
+    login = new Login(0, new Conexao(fileName));
     login->show();
 }
 

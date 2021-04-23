@@ -1,5 +1,8 @@
 #include <QApplication>
 #include "selectdatabase.h"
+#include "login.h"
+
+Login *login;
 
 int main(int argc, char *argv[])
 {
