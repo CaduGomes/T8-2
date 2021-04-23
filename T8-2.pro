@@ -14,6 +14,7 @@ SOURCES += \
     main.cpp \
     login.cpp \
     mainwindow.cpp \
+    selectdatabase.cpp \
     signin.cpp \
     user.cpp
 
@@ -23,6 +24,7 @@ HEADERS += \
     document.h \
     login.h \
     mainwindow.h \
+    selectdatabase.h \
     signin.h \
     user.h
 
@@ -30,6 +32,7 @@ FORMS += \
     dbshowdata.ui \
     login.ui \
     mainwindow.ui \
+    selectdatabase.ui \
     signin.ui
 
 # Default rules for deployment.
