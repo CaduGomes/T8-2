@@ -1,13 +1,10 @@
 #include <QApplication>
-
-#include "login.h"
-
-Login *login;
+#include "selectdatabase.h"
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    login = new Login();
-    login->show();
+    SelectDatabase w;
+    w.show();
     return a.exec();
 }
