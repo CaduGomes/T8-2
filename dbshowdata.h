@@ -15,6 +15,9 @@ public:
     explicit DBShowData(QWidget *parent = nullptr, QString type = "", Conexao *db = nullptr);
     ~DBShowData();
 
+private slots:
+    void on_refreshButton_clicked();
+
 private:
     Ui::DBShowData *ui;
     QString dataType;

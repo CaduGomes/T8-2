@@ -57,7 +57,7 @@ private:
     Ui::MainWindow *ui;
     Conexao *con;
     QVector <Signature *> m_addDocumentUsers;
-
+    DBShowData *showData;
 };
 
 

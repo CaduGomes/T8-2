@@ -280,3 +280,8 @@ void DBShowData::refreshData(){
         }
     }
 }
+
+void DBShowData::on_refreshButton_clicked()
+{
+    refreshData();
+}
