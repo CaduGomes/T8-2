@@ -1,7 +1,10 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "login.h"
 #include <QPixmap>
 #include <QTextStream>
+
+extern Login * login;
 
 void MainWindow::LoadDatabase(QVector<User *> &users, QVector<Document *> &documents){
 
@@ -187,8 +190,15 @@ void MainWindow::on_addUserButton_clicked()
 {
     QString userName = ui->userNameInput->toPlainText();
     bool find = false;
+
+    if(m_authUser->getName() == userName){
+        QMessageBox::critical(this, tr("Erro"), tr("Você não precisa ser adicionado!"));
+        return;
+    }
+
     for(User *u: m_users){
         if(u->getName() == userName){
+
             find = true;
             m_addDocumentUsers.push_back(new Signature(u, false));
         }
@@ -289,30 +299,30 @@ void MainWindow::on_docsToSignList_itemDoubleClicked(QListWidgetItem *item)
 
 }
 
-
 void MainWindow::on_actionUsuarios_triggered()
 {
-    DBShowData showUser(this,"users", con);
+    showData = new DBShowData(this,"users", con);
 
-    showUser.exec();
+    showData->show();
 }
 
 void MainWindow::on_actionDocumentos_triggered()
 {
-    DBShowData showDocuments(this,"documents", con);
+    showData = new DBShowData(this,"documents", con);
 
-    showDocuments.exec();
+    showData->show();
 }
 
 void MainWindow::on_actionAssinaturas_triggered()
 {
-    DBShowData showSignatures(this,"signatures", con);
 
-    showSignatures.exec();
+    showData = new DBShowData(this,"signatures", con);
+
+    showData->show();
 }
 
 void MainWindow::on_actionSignout_triggered()
 {
-    // Close user session
-    close();
+    this->close();
+    login->show();
 }

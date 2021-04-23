@@ -1,11 +1,13 @@
+#include <QApplication>
+
 #include "login.h"
 
-#include <QApplication>
+Login *login;
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    Login w;
-    w.show();
+    login = new Login();
+    login->show();
     return a.exec();
 }

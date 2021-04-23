@@ -61,10 +61,10 @@ void Login::on_loginButton_clicked()
                 if(query.value(1).toString()!=""){
                     box.setText("Logado com sucesso!");
                     box.exec();
-                    hide();
+                    this->close();
                     main = new MainWindow(0, con, query.value(0).toString());
 
-                   main->show();
+                    main->show();
 
                 }else {
                     box.setText("Conta não encontrada!");
