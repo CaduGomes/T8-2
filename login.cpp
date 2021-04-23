@@ -5,35 +5,13 @@
 #include <QTextStream>
 #include <QMessageBox>
 
-Login::Login(QWidget *parent)
+Login::Login(QWidget *parent, Conexao *db)
     : QMainWindow(parent)
     , ui(new Ui::Login)
 {
     ui->setupUi(this);
     setWindowTitle("Login");
-    bool selectedFile = false;
-
-    while(!selectedFile){
-        QMessageBox::information(this, "Banco de dados", "Selecione um arquivo txt");
-        QString fileName = QFileDialog::getOpenFileName(this, tr("Selecione seu banco de dados"),
-                                                        QString(),
-                                                        tr("Database Files (*.db);"));
-
-
-        if (!fileName.isEmpty()) {
-            QFile file(fileName);
-            if (!file.open(QIODevice::ReadOnly)) {
-                QMessageBox::critical(this, tr("Error"), tr("Could not open file"));
-                return;
-            }else {
-                selectedFile = true;
-                con = new Conexao(fileName);
-            }
-        }else {
-            QMessageBox::critical(this, tr("Error"), tr("Você precisa escolher um BD"));
-            this->hide();
-        }
-    };
+    con = db;
 }
 
 Login::~Login()
@@ -64,7 +42,7 @@ void Login::on_loginButton_clicked()
                     hide();
                     main = new MainWindow(0, con, query.value(0).toString());
 
-                   main->show();
+                    main->show();
 
                 }else {
                     box.setText("Conta não encontrada!");

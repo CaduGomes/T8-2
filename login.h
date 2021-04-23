@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "mainwindow.h"
+#include "DBConnection.h"
 #include "signin.h"
 
 QT_BEGIN_NAMESPACE
@@ -14,7 +15,7 @@ class Login : public QMainWindow
     Q_OBJECT
 
 public:
-    Login(QWidget *parent = nullptr);
+    Login(QWidget *parent = nullptr, Conexao *db = nullptr);
     ~Login();
 
 private slots:
@@ -24,6 +25,7 @@ private slots:
 
 protected:
      Conexao *con;
+
 private:
     Ui::Login *ui;
     MainWindow *main;
