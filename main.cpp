@@ -1,6 +1,5 @@
-#include "selectdatabase.h"
-
 #include <QApplication>
+#include "selectdatabase.h"
 
 int main(int argc, char *argv[])
 {
